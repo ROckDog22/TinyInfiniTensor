@@ -36,11 +36,12 @@ namespace infini
         for(auto alloc_iter = block.begin(); alloc_iter!=block.end(); ++alloc_iter){
             size_t expand_temp = temp + size;
             if (expand_temp<= alloc_iter->first){
-                block[temp] = size;
-                return temp;
+                break;
             }
             temp = alloc_iter->first + alloc_iter->second;
         }
+        this->peak = getAlignedSize(std::max(this->peak, temp+size-1));
+        this->used += size;
         block[temp] = size;
         return temp;
     }
@@ -54,6 +55,7 @@ namespace infini
         // TODO: 设计一个算法来回收内存
         // =================================== 作业 ===================================
         block.erase(addr);
+        used-=size;
     }
 
     void *Allocator::getPtr()
