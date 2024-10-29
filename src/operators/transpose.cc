@@ -36,7 +36,7 @@ namespace infini
         for(int i=0; i<rank; ++i){
             output_dim[i]=input_dim[transposePermute[i]];
         }
-        return vector<Shape>{output_dim};
+        return {{output_dim}};
     }
 
     std::string TransposeObj::toString() const
