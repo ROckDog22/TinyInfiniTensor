@@ -1,6 +1,8 @@
 #include "core/graph.h"
 #include "operators/transpose.h"
 #include "operators/matmul.h"
+#include "operators/transpose.h"
+#include "operators/matmul.h"
 #include <algorithm>
 #include <numeric>
 #include <queue>
