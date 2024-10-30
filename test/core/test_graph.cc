@@ -10,6 +10,10 @@ namespace infini
 {
     TEST(Graph, Optimize)
     {
+
+        // i1->transpose->t1->transpose->t2
+        //                                   -> matmul -> o
+        // i2->transpose->t3                       
         Runtime runtime = NativeCpuRuntimeObj::getInstance();
         Graph g = make_ref<GraphObj>(runtime);
         Tensor i1 = g->addTensor({2, 3, 4, 5}, DataType::UInt32);
